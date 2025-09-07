@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Holidays</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+    <h1><%= content %></h1>
+
+    
+    <form action="/holidays" method="POST">
+        <input type="text" name="country" placeholder="Country code" value="<%= country ? country : '' %>" required>
+        <input type="text" name="year" placeholder="Year" value="<%= year ? year : '' %>" required>
+        <button type="submit">Get Holidays</button>
+    </form>
+
+    
+    <% if (data && data.length > 0) { %>
+        <h2>Holidays:</h2>
+        <ol>
+            <% data.forEach(function(h) { %>
+                <li><strong><%= h.name %></strong> (<%= h.type %>) - <%= h.date %></li>
+            <% }) %>
+        </ol>
+
+        
+        <form action="/download-pdf" method="POST">
+            <input type="hidden" name="country" value="<%= country %>">
+            <input type="hidden" name="year" value="<%= year %>">
+            <button type="submit">DOWNLOAD PDF</button>
+        </form>
+    <% } %>
+    </div>
+</body>
+</html>
