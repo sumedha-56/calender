@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
     <title>Holidays</title>
@@ -20,7 +20,12 @@
         <h2>Holidays:</h2>
         <ol>
             <% data.forEach(function(h) { %>
-                <li><strong><%= h.name %></strong> (<%= h.type %>) - <%= h.date %></li>
+                <li><strong><td>
+  <a href="https://en.wikipedia.org/wiki/<%= encodeURIComponent(h.name) %>" target="_blank">
+    <%= h.name %>
+  </a>
+</td>
+</strong> (<%= h.type %>) - <%= h.date %></li>
             <% }) %>
         </ol>
 
